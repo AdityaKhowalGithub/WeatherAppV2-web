@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Gloock&family=PT+Serif&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500;1,6..96,700&family=Gloock&family=PT+Serif&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Check That Weather</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
-        <div class="search-button">
-            <input type="text" placeholder="Search for a city" />
-            <!--search button icon-->
-            
-            <button class="fa-solid fa-magnifying-glass-location"></button>
+        <div class="wrapper">
+            <div class="search-button">
+                <input type="text" name="search" placeholder="Search for a city" autocomplete="chrome=off" />
+                <!--search button icon-->
+
+                <button class="fa-solid fa-magnifying-glass-location"></button>
+            </div>
+            <div class="results">
+
+            </div>
         </div>
 
         <div class="not-found">
@@ -28,9 +34,9 @@
         </div>
 
         <div class="weather-box">
-            <img src=""> 
+            <img src="">
             <p class="temperature"></p>
-            <p class="description"></p>   
+            <p class="description"></p>
             <!-- <div class="weather">
                 <i class="fa-solid fa-cloud"></i>
                 <p>weather</p>
@@ -38,8 +44,8 @@
             <div class="temp">
                 <i class="fa-solid fa-temperature-three-quarters"></i>
                 <p>temp</p> -->
-           
-            
+
+
         </div>
 
         <div class="weather-details">
@@ -62,10 +68,8 @@
     </div>
 
 
-    <script
-      src="https://kit.fontawesome.com/48b15668a5.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/48b15668a5.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
-  </body>
+</body>
+
 </html>

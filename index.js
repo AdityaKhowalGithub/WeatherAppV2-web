@@ -1,21 +1,87 @@
 const container = document.querySelector(".container");
 const search = document.querySelector(".search-button button");
+const Searchinput = document.querySelector(".search-button input");
 const weatherBox = document.querySelector(".weather-box");
 const weatherDetails = document.querySelector(".weather-details");
 const notFound = document.querySelector(".not-found");
+const wrapper = document.querySelector(".wrapper");
+const results = document.querySelector(".results");
 
-container.addEventListener("keypress", function(event) {
-    // If the user presses the "Enter" key on the keyboard
-    if (event.key === "Enter") {
-      search.click();
+//searchable stores all locations from openweather api
+let searchable = [
+    "Abidjan",
+    "Accra",
+    "Addis Ababa",
+    "Algiers",
+    "Seattle",
+    "Germany",
+];
+
+
+
+
+
+wrapper.addEventListener("keypress", function (event) {
+    results.style.display = "block";
+    results.classList.add("fadein");
+    results.style.scale = "1";
+    results.style.opacity = "1";
+    Searchinput.addEventListener("keyup", () => {
+        let completion = [];
+        
+        let input = Searchinput.value;
+        if (input.length > 0) {
+            completion = searchable.filter((location) => {
+                return location.toLowerCase().includes(input.toLowerCase());
+
+            });
+        }
+
+        renderResults(completion);
+        let size = completion.length * 50;
+        if(size > 200) {
+            size = 200;
+        }
+        if(size < 50) {
+            size = 105;
+        }
+        container.style.height = size + "px";
+        
+        
+    });
+    
+
+
+    function renderResults(completion) {
+        if(!completion.length) {
+            results.innerHTML = `<li>no results found</li>`;
+            return;
+        }
+
+        let content = completion.map((location) => {
+            return `<li>${location}</li>`;
+        }).join("");
+
+        results.innerHTML = `<ul>${content}</ul>`
+
     }
-  });
+    if (event.key === "Enter") {
+        search.click();
+        results.style.display = "none";
+        results.classList.remove("fadein");
+        results.style.scale = "0";
+        results.style.opacity = "0";
+    }
+    if (event.keyCode === 9 || event.which === 9 || event.key === "Tab") {
+        console.log("tab");
+    }
+});
 
 search.addEventListener("click", () => {
     const APIkey = "5b2165dbd3b45843a63251f57082b91e";
     const city = document.querySelector(".search-button input").value;
 
-    if (city === "") 
+    if (city === "")
         return;
 
     fetch(
@@ -23,7 +89,7 @@ search.addEventListener("click", () => {
     )
         .then((response) => response.json())
         .then((json) => {
-            
+
             if (json.cod === "404") {
                 container.style.height = "400px";
                 weatherBox.style.display = "none";
