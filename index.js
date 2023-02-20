@@ -4,13 +4,10 @@ const weatherBox = document.querySelector(".weather-box");
 const weatherDetails = document.querySelector(".weather-details");
 const notFound = document.querySelector(".not-found");
 
-search.addEventListener("keypress", function(event) {
+container.addEventListener("keypress", function(event) {
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
-      // Cancel the default action, if needed
-      event.preventDefault();
-      // Trigger the button element with a click
-      document.getElementById("search").click();
+      search.click();
     }
   });
 
@@ -18,18 +15,21 @@ search.addEventListener("click", () => {
     const APIkey = "5b2165dbd3b45843a63251f57082b91e";
     const city = document.querySelector(".search-button input").value;
 
-    if (city === "") return;
+    if (city === "") 
+        return;
 
     fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`
     )
         .then((response) => response.json())
         .then((json) => {
+            
             if (json.cod === "404") {
                 container.style.height = "400px";
                 weatherBox.style.display = "none";
                 weatherDetails.style.display = "none";
                 notFound.style.display = "block";
+                notFound.style.scale = "20%";
                 notFound.classList.add("fadein");
                 return;
             }
@@ -38,7 +38,6 @@ search.addEventListener("click", () => {
             notFound.classList.remove("fadein");
 
             const image = document.querySelector(".weather-box img");
-
             const temperature = document.querySelector(".weather-box .temperature");
             const description = document.querySelector(".weather-box .description");
             const humidity = document.querySelector(".weather-details .humidity span");
@@ -79,7 +78,8 @@ search.addEventListener("click", () => {
                     image.src = "https://img.icons8.com/color/96/000000/fog-day.png";
                     break;
                 default:
-                    image.src = "";
+                    image.src = "no location found.png";
+                    break;
             }
 
             temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
@@ -91,7 +91,6 @@ search.addEventListener("click", () => {
             weatherDetails.style.display = '';
             weatherBox.classList.add("fadein");
             weatherDetails.classList.add("fadein");
-
             container.style.height = "590px";
         });
 });

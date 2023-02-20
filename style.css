@@ -161,8 +161,6 @@ body{
     font-weight: 500;
 }
 
-
-
 .not-found{
     width: 100%;
     text-align: center;
@@ -188,7 +186,14 @@ body{
     opacity: 0;
 }
 
-.fadeIn{
+.fadein{
     animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;
 } 
+
+@keyframes fadeIn{
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
