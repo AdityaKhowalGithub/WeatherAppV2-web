@@ -42,8 +42,14 @@ wrapper.addEventListener("keypress", function (event) {
         if(size > 200) {
             size = 200;
         }
-        if(size < 50) {
+        if(size < 100) {
             size = 105;
+        }
+        if( results.innerHTML === ``) {
+            results.style.opacity = "0";
+            results.style.scale = "0";
+            results.style.display = "none";
+            results.classList.remove("fadein");
         }
         container.style.height = size + "px";
         
@@ -54,7 +60,7 @@ wrapper.addEventListener("keypress", function (event) {
 
     function renderResults(completion) {
         if(!completion.length) {
-            results.innerHTML = `<li>no results found</li>`;
+            results.innerHTML = ``;
             return;
         }
 
