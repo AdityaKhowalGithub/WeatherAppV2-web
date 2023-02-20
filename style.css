@@ -129,7 +129,8 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        margin-top: 30px;
+        margin-top: 25px;
+        font-size: 16px;
     }
 
     .weather-details .humidity,
@@ -145,7 +146,7 @@
 
     .weather-details p {
         color: #06283D;
-        font-size: 18px;
+        font-size: 12px;
         font-weight: 600;
     }
 
@@ -159,7 +160,7 @@
 
     .weather-details span {
         color: #06283D;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 500;
     }
 
@@ -350,7 +351,7 @@
 
     .weather-details span {
         color: #06283D;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 500;
     }
 
